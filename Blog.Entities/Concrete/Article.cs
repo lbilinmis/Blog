@@ -1,10 +1,5 @@
 ﻿
 using Blog.Shared.Entities.Abstract;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Blog.Entities.Concrete
 {
@@ -27,6 +22,6 @@ namespace Blog.Entities.Concrete
         public int UserId { get; set; }
         public User User { get; set; }
 
-        public ICollection<Comment> Comments{ get; set; }
+        public ICollection<Comment> Comments { get; set; }
     }
 }

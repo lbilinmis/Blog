@@ -1,9 +1,29 @@
-var builder = WebApplication.CreateBuilder(args);
+﻿
+using Blog.DataAccess.Concrete.EntityFramework.Contexts;
+using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
-// Add services to the container.
-builder.Services.AddRazorPages();
+var builder = WebApplication.CreateBuilder(args);
+{
+    // Add services to the container.
+    builder.Services.AddRazorPages();
+
+    builder.Services.AddDbContext<BlogDbContext>(x =>
+    {
+        x.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection"), option =>
+        {
+            option.MigrationsAssembly(Assembly.GetAssembly(typeof(BlogDbContext)).GetName().Name);
+            //Migration iþlemi için kullanýlacak dll i aldý
+        });
+    });
+
+}
+
 
 var app = builder.Build();
+
+
+{
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -23,3 +43,5 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 app.Run();
+
+}

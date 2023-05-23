@@ -1,13 +1,7 @@
 ﻿using Blog.Shared.DataAccess.Abstract;
 using Blog.Shared.Entities.Abstract;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Blog.Shared.DataAccess.Concrete.EntityFramework
 {
