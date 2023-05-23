@@ -1,4 +1,5 @@
-﻿using Blog.Entities.Concrete;
+﻿using Blog.DataAccess.Concrete.EntityFramework.Mappings;
+using Blog.Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,17 @@ namespace Blog.DataAccess.Concrete.EntityFramework.Contexts
         public DbSet<Role> Roles { get; set; }
         public DbSet<User> Users { get; set; }
 
-       
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new ArticleMap());
+            modelBuilder.ApplyConfiguration(new CategoryMap());
+            modelBuilder.ApplyConfiguration(new CommentMap());
+            modelBuilder.ApplyConfiguration(new RoleMap());
+            modelBuilder.ApplyConfiguration(new UserMap());
+
+            base.OnModelCreating(modelBuilder);
+        }
+
     }
 }
